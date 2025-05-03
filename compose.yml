@@ -1,0 +1,9 @@
+services:
+  quiz-server:
+    build:
+      context: .
+      dockerfile: ./build/quiz/Dockerfile
+    container_name: quiz-server
+    restart: always
+    ports:
+      - "${HOST_PORT}:${CONTAINER_PORT}"
