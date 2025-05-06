@@ -1,3 +1,4 @@
+from typing import List
 from uuid import UUID
 
 from sqlalchemy.orm import Session
@@ -19,3 +20,7 @@ class QuizRepository(QuizRepositoryInterface):
     def read(self, id: UUID) -> Quiz:
         quiz_table = self.session.query(QuizTable).filter_by(id=id).first()
         return Quiz(quiz_table.id, quiz_table.title)
+
+    def get_all(self) -> List[Quiz]:
+        quiz_tables = self.session.query(QuizTable).all()
+        return [Quiz(quiz_table.id, quiz_table.title) for quiz_table in quiz_tables]
