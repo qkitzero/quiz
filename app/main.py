@@ -1,8 +1,6 @@
 from fastapi import FastAPI
 
+from app.interface import quiz_handler
+
 app = FastAPI()
-
-
-@app.get("/health")
-def health_check():
-    return {"status": "ok"}
+app.include_router(quiz_handler.router)
