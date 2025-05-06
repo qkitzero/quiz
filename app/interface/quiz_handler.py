@@ -32,3 +32,9 @@ def create_quiz(title: str, quiz_usecase: QuizUsecase = Depends(get_quiz_usecase
 def get_quiz(id: UUID, quiz_usecase: QuizUsecase = Depends(get_quiz_usecase)):
     quiz = quiz_usecase.get_quiz(id)
     return {"title": quiz.title}
+
+
+@router.get("/")
+def get_all_quizzes(quiz_usecase: QuizUsecase = Depends(get_quiz_usecase)):
+    quizzes = quiz_usecase.get_all_quizzes()
+    return [{"id": quiz.id, "title": quiz.title} for quiz in quizzes]

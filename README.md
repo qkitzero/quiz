@@ -4,3 +4,5 @@
 - FastAPI
 - Clean Architecture
 - Docker
+- SQLAlchemy
+- Alembic
